@@ -1,0 +1,85 @@
+{
+  "test function": {
+    "prefix": "test",
+    "body": [
+      "#[test]",
+      "fn ${1:test_name}() {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Test function"
+  },
+  "test module": {
+    "prefix": "tmod",
+    "body": [
+      "#[cfg(test)]",
+      "mod tests {",
+      "\tuse super::*;",
+      "",
+      "\t#[test]",
+      "\tfn ${1:test_name}() {",
+      "\t\t${0}",
+      "\t}",
+      "}"
+    ],
+    "description": "Test module"
+  },
+  "impl block": {
+    "prefix": "impl",
+    "body": [
+      "impl ${1:Type} {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "impl block"
+  },
+  "impl trait": {
+    "prefix": "implt",
+    "body": [
+      "impl ${1:Trait} for ${2:Type} {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "impl Trait for Type"
+  },
+  "derive": {
+    "prefix": "der",
+    "body": "#[derive(${1:Debug, Clone})]",
+    "description": "derive macro"
+  },
+  "match expression": {
+    "prefix": "match",
+    "body": [
+      "match ${1:expr} {",
+      "\t${2:pattern} => ${3:value},",
+      "\t${0}",
+      "}"
+    ],
+    "description": "match expression"
+  },
+  "Result return": {
+    "prefix": "res",
+    "body": "Result<${1:T}, ${2:Error}>",
+    "description": "Result<T, E>"
+  },
+  "Option match": {
+    "prefix": "opt",
+    "body": [
+      "match ${1:expr} {",
+      "\tSome(${2:val}) => ${3:val},",
+      "\tNone => ${0},",
+      "}"
+    ],
+    "description": "Option match"
+  },
+  "Vec initialization": {
+    "prefix": "vec",
+    "body": "let ${1:name}: Vec<${2:T}> = Vec::new();",
+    "description": "Vec::new()"
+  },
+  "Vec with values": {
+    "prefix": "vecm",
+    "body": "let ${1:name} = vec![${0}];",
+    "description": "vec![] macro"
+  }
+}

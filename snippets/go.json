@@ -1,0 +1,94 @@
+{
+  "if err != nil return": {
+    "prefix": "iferr",
+    "body": [
+      "if err != nil {",
+      "\treturn ${1:nil, err}",
+      "}"
+    ],
+    "description": "if err != nil { return }"
+  },
+  "if err != nil return fmt.Errorf": {
+    "prefix": "iferrf",
+    "body": [
+      "if err != nil {",
+      "\treturn ${1:nil, }fmt.Errorf(\"${2:failed to %s}: %w\", ${3:err})",
+      "}"
+    ],
+    "description": "if err != nil { return fmt.Errorf }"
+  },
+  "if err := ...; err != nil": {
+    "prefix": "ife",
+    "body": [
+      "if err := ${1:expr}; err != nil {",
+      "\treturn ${2:nil, err}",
+      "}"
+    ],
+    "description": "if err := ...; err != nil {}"
+  },
+  "test function": {
+    "prefix": "tst",
+    "body": [
+      "func Test${1:Name}(t *testing.T) {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Test function"
+  },
+  "table-driven test": {
+    "prefix": "tbt",
+    "body": [
+      "func Test${1:Name}(t *testing.T) {",
+      "\ttests := []struct {",
+      "\t\tname string",
+      "\t\t${2:// fields}",
+      "\t}{",
+      "\t\t{",
+      "\t\t\tname: \"${3:test case}\",",
+      "\t\t},",
+      "\t}",
+      "",
+      "\tfor _, tt := range tests {",
+      "\t\tt.Run(tt.name, func(t *testing.T) {",
+      "\t\t\t${0}",
+      "\t\t})",
+      "\t}",
+      "}"
+    ],
+    "description": "Table-driven test"
+  },
+  "benchmark function": {
+    "prefix": "bench",
+    "body": [
+      "func Benchmark${1:Name}(b *testing.B) {",
+      "\tfor i := 0; i < b.N; i++ {",
+      "\t\t${0}",
+      "\t}",
+      "}"
+    ],
+    "description": "Benchmark function"
+  },
+  "http handler func": {
+    "prefix": "hf",
+    "body": [
+      "func ${1:handler}(w http.ResponseWriter, r *http.Request) {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "HTTP handler function"
+  },
+  "method with receiver": {
+    "prefix": "meth",
+    "body": [
+      "func (${1:r} *${2:Type}) ${3:Method}(${4}) ${5:error} {",
+      "\t${0}",
+      "}"
+    ],
+    "description": "Method with receiver"
+  },
+  "context parameter": {
+    "prefix": "ctx",
+    "body": "ctx context.Context",
+    "description": "context.Context parameter"
+  }
+}
