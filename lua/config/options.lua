@@ -12,6 +12,9 @@ vim.g.snacks_animate = false
 -- Disable autoformat on save (use <leader>cf for manual formatting)
 vim.g.autoformat = false
 
+-- Use basedpyright (strict, fast pyright fork) as the Python LSP
+vim.g.lazyvim_python_lsp = "basedpyright"
+
 -- Go uses tabs (gofumpt convention)
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "go", "gomod", "gowork", "gotmpl" },
