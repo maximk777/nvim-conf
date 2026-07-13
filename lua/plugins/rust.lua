@@ -4,6 +4,10 @@ return {
     "mrcjkb/rustaceanvim",
     opts = {
       server = {
+        -- Всегда брать rust-analyzer из rustup (совпадает с активным тулчейном),
+        -- а не устаревший homebrew-овский из $PATH — иначе proc-макросы не
+        -- разворачиваются и проект становится весь красный.
+        cmd = { vim.fn.expand("~/.cargo/bin/rust-analyzer") },
         default_settings = {
           ["rust-analyzer"] = {
             check = {
